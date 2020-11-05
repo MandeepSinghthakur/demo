@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
+import { CommentsComponent } from 'src/app/modules/comments/comments.component';
 import { LoginComponent } from 'src/app/modules/login/login.component'
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -14,7 +15,8 @@ import { CommonService } from 'src/app/services/common.service';
   declarations: [
     DefaultComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,

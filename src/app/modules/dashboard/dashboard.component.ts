@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { CommonService } from '../../services/common.service'
 import {ActivatedRoute} from '@angular/router';
 
@@ -12,16 +11,14 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
   currentUser: any
   posts:any
-  displayedColumns: string[] = ['title'];
-
   constructor( private appService: CommonService, private route:ActivatedRoute) { }
 
   ngOnInit() {
     this.getUsers()
     this.getPosts()
+    this.getComments()
   }
 
   getPosts():void {
@@ -29,9 +26,9 @@ export class DashboardComponent implements OnInit {
     .subscribe(results => this.posts = results)
   }
 
-  getComments(postid):void {
-    this.appService.getComments(postid)
-    .subscribe(results => console.log(result))
+  getComments():void {
+    this.appService.getComments(2)
+    .subscribe(results => console.log(results))
   }
 
   getUsers(): void {

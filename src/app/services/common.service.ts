@@ -43,7 +43,7 @@ export class CommonService {
   /** GET comments from the server */
   getComments(postId): Observable<[]> {
     let httpParams = new HttpParams().set('postId', postId)
-    return this.http.get<[]>(this.postsUrl,{
+    return this.http.get<[]>(this.commentsUrl,{
                 params: httpParams
         })
       .pipe(
