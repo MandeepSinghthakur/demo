@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="20px">
+    <div fxFlex="30" *ngIf="currentUser">
+        <h3>Profile Details</h3>
+         <div>Name: <b>{{currentUser.name}}</b></div>
+         <div>Address: <b>{{currentUser.address.street}} {{currentUser.address.suite}} </b> <div> <b>{{currentUser.address.city}} , {{currentUser.address.zipcode}}</b></div></div>
+        <div>Email: <b>{{currentUser.email}}</b></div>
+    </div>
+<div fxFlex="70">
+        <div class="mat-elevation-z8" *ngIf="posts && posts.length > 0 ">
+            <div *ngFor="let post of posts">
+            <mat-list>
+             <mat-list-item *ngFor="let post of posts"> 
+                <div matLine> <b>{{post.title}}</b> </div>
+                 <p matLine>
+                  <span> comment </span>
+                </p>
+              </mat-list-item>
+
+            </mat-list>
+         </div>
+        </div>
+
+    </div>
+   
+   
+</div>
