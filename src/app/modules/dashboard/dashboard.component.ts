@@ -13,27 +13,33 @@ import {ActivatedRoute} from '@angular/router';
 export class DashboardComponent implements OnInit {
   currentUser: any
   posts:any
+  id:any
+  users:any
   constructor( private appService: CommonService, private route:ActivatedRoute) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id']
     this.getUsers()
     this.getPosts()
-    this.getComments()
   }
 
   getPosts():void {
-    this.appService.getPosts(this.route.snapshot.params['id'])
+    this.appService.getPosts(this.id)
     .subscribe(results => this.posts = results)
-  }
-
-  getComments():void {
-    this.appService.getComments(2)
-    .subscribe(results => console.log(results))
   }
 
   getUsers(): void {
     this.appService.getUsers()
-    .subscribe(users => this.currentUser = users.find(user => user.id == this.route.snapshot.params['id']));
+    .subscribe(users => {
+      this.users = users
+      this.getCurrentUser()
+    });
+  }
+
+  getCurrentUser(){
+    if(this.users && this.users.length) {
+      this.currentUser = this.users.find(u => u.id == this.id)
+    }
   }
 
 }
